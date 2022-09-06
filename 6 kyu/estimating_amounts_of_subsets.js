@@ -21,8 +21,7 @@ function estSubsets(arr) {
       n += combinatoric(uniqueArr.length, i);
       i++;
     }
-    console.log(n) // n = amount of subsets that don not have repeated elements
+    return n;
 }
 
-estSubsets( ['a', 'z', 'z', 'z', 'b', 'j', 'f', 'k', 'b', 'd', 
-    'j', 'j', 'n', 'm', 'm']);
+module.exports = estSubsets;
