@@ -1,3 +1,6 @@
+// Time: O(n)
+// space: O(n)
+
 function moveZeros(arr) {
   const zeros = [];
   for(let i =0; i < arr.length; i++){
