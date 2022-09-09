@@ -24,7 +24,7 @@ It was decided to attribute a "weight" to numbers. The weight of a number will b
 </code></pre>
 </div>
 <div class="description-content p-4">
-<h3>Perimeter of squares in a rectangle</h3>
+<h3>3. Perimeter of squares in a rectangle</h3>
 <div class="markdown prose max-w-none mb-8" id="description"><p>The drawing shows 6 squares the sides of which have a length of 1, 1, 2, 3, 5, 8.
 It's easy to see that the sum of the perimeters of these squares is :
 <code>4 * (1 + 1 + 2 + 3 + 5 + 8) = 4 * 20 = 80 </code>                                        </p>
@@ -39,5 +39,4 @@ It's easy to see that the sum of the perimeters of these squares is :
 perimeter(7)  should return 216
 </code></pre>
 </div>
-<hr>
 </div>
