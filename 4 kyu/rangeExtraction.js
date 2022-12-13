@@ -1,35 +1,40 @@
-function rangeHelper(list,startIndex, index = startIndex){
-  console.log(startIndex, index);
-  if (Math.abs(list[index + 1] - list[index]) !== 1) {
-    if (index > 1 && list[index] - list[startIndex] >= 2) return [index + 1, true, list[startIndex], list[index]];
-    return [index + 2, false, list[index - 1], list[index]];
+function solution(list) {
+  const ranges = [];
+  let range = [];
+  list.sort((a, b) => a - b);
+
+  // this helper function that will be brute forcing through the array. 
+  const helper = (index = 0) => {
+    // this is the base case to terminate the recursion.
+    if (index > list.length - 1) {
+      if(range.length > 2) ranges.push(`${range[0]}-${range[range.length - 1]}`);
+      return;
+    };
+    // this checks for sequence of 1 difference.
+    if(list[index + 1] - list[index] === 1) {
+      range.push(list[index]);
+      helper(index + 1);
+    } else {
+      range.push(list[index]);
+      if(range.length > 2) ranges.push(`${range[0]}-${range[range.length - 1]}`);
+      else ranges.push(range.join(','))
+      range = [];
+      helper(index + 1);
+    }
   }
-  index++;
-  return rangeHelper(list, startIndex, index);
-}
-function solution(list){
-   list.sort((a, b) => a - b)
-   console.log(list);
-   const ranges = [];
-   for(let i = 0; i < list.length;) {
-     let [index, ...range] = rangeHelper(list, i);
-     console.log(range);
-     if (range[0] ) ranges.push(range.splice(1, 2).join("-"))
-     else {
-       if (range[1]) ranges.push(`${range[1]}`)
-       if (range[2]) ranges.push(`${range[2]}`)
-//        index++;
-     }
-     i = index;
-   }
-   return ranges.join(",")
+
+  helper();
+  return ranges.join(",");
 }
 
 
 console.log(solution([
-  -86, -85, -82, -79, -76, -74,
-  -72, -69, -66, -63, -62, -59,
-  -57, -56, -55, -52, -51, -49,
-  -46, -43, -41, -38, -36, -34,
-  -31, -28
-]));
+  -6, -3, -2, -1,  0,  1,  3,
+   4,  5,  7,  8,  9, 10, 11,
+  14, 15, 17, 18, 19, 20
+]))
+console.log(solution([
+  -69, -67, -64, -62,
+  -59, -56, -55, -53,
+  -50, -48, -47
+]))
